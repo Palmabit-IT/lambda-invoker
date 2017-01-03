@@ -27,13 +27,13 @@ invoker.invoke(<lambda-arn>, <payload>, (err, data) => {
 
 ```js
 invoker.invoke(<lambda-arn>, <payload>)
-    .then(response => { //... })
-    .catch(err => { //... })
+    .then(response => { /*...*/ })
+    .catch(err => { /*...*/ })
 ```
 
 ## Errors
 
-### No lambda ARN name provided
+### No lambda arn name provided
 
 ```
 {statusCode: 400, message: "No function name"}
