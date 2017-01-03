@@ -1,5 +1,6 @@
 # Lambda invoker
 
+[![Build Status](https://travis-ci.org/Palmabit-IT/lambda-invoker.svg?branch=master)](https://travis-ci.org/Palmabit-IT/lambda-invoker)
 [![Known Vulnerabilities](https://snyk.io/test/github/Palmabit-IT/lambda-invoker/badge.svg)](https://snyk.io/test/github/Palmabit-IT/lambda-invoker)
 [![https://david-dm.org/Palmabit-IT/lambda-invoker.svg](https://david-dm.org/Palmabit-IT/lambda-invoker.svg)](https://david-dm.org/Palmabit-IT/lambda-invoker.svg)
 
