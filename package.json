@@ -1,6 +1,6 @@
 {
   "name": "lambda-invoker",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A class to invoke a lambda function from an other",
   "main": "index.js",
   "scripts": {
