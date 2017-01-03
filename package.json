@@ -1,0 +1,25 @@
+{
+  "name": "lambda-invoker",
+  "version": "0.1.0",
+  "description": "A class to invoke a lambda function from an other",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha ./tests/*.js",
+    "test-travis": "istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec ./tests/*"
+  },
+  "keywords": [
+    "aws",
+    "lambda",
+    "invoke",
+    "promise"
+  ],
+  "author": "Palmabit <hello@palmabit.com> (http://www.palmabit.com/)",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.2.0",
+    "sinon": "^1.17.7",
+    "sinon-chai": "^2.8.0"
+  }
+}
