@@ -45,6 +45,12 @@ invoker.invoke(<lambda-arn>, <payload>)
 {statusCode: 400, message: "Can't get payload"}
 ```
 
+### Errors from invoked lambda
+
+```
+{statusCode: <status-code-from-lambda>, message: <error-message-from-lambda>}
+```
+
 
 ## Tests
 ```
