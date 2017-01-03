@@ -87,6 +87,13 @@ describe('lambdaInvoke tests', () => {
     done()
   })
 
+  it('should parse error message', done => {
+    const error = {statusCode: 403, message: faker.lorem.word()}
+
+    expect(lambdaInvoker.parseError(JSON.stringify(error))).to.deep.equal(error);
+    done()
+  })
+
   describe('callback tests', () => {
     it('should get error by invoked lambda', done => {
       const fakeError = {statusCode: faker.random.number(), message: faker.lorem.word()}

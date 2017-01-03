@@ -68,6 +68,8 @@ class LambdaInvoker {
   }
 
   fomatError(error) {
+    error = this.parseError(error)
+
     if (typeof error === 'string') {
       return {
         statusCode: 400,
@@ -80,6 +82,14 @@ class LambdaInvoker {
     return {
       statusCode: err.statusCode || 400,
       message: err.message || 'Error',
+    }
+  }
+  
+  parseError(error) {
+    try {
+      return JSON.parse(error)
+    } catch (e) {
+      return error
     }
   }
 }
