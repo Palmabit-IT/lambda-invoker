@@ -7,6 +7,10 @@
     "test": "./node_modules/.bin/mocha ./tests/*.js",
     "test-travis": "istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec ./tests/*"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Palmabit-IT/lambda-invoker.git"
+  },
   "keywords": [
     "aws",
     "lambda",
