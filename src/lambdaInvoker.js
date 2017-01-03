@@ -37,8 +37,9 @@ class LambdaInvoker {
           const payload = this.parsePayload(data.Payload)
 
           if (this.hasError(payload)) {
-            cb(this.fomatError(payload))
-            reject(payload)
+            const error = this.fomatError(payload.errorMessage)
+            cb(error)
+            reject(error)
 
           } else {
             cb(null, payload)
