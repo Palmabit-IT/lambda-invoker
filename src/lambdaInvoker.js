@@ -34,12 +34,52 @@ class LambdaInvoker {
           reject(this.errNoPayload)
 
         } else {
-          cb(null, data.Payload)
-          resolve(data.Payload)
+          const payload = this.parsePayload(data.Payload)
+
+          if (this.hasError(payload)) {
+            cb(this.fomatError(payload))
+            reject(payload)
+
+          } else {
+            cb(null, payload)
+            resolve(payload)
+          }
         }
 
       })
     })
+  }
+
+  parsePayload(payload) {
+    if (typeof payload === 'object') {
+      return payload
+    }
+    
+    try {
+      return JSON.parse(payload)
+    } catch (e) {
+      return payload
+    }
+  }
+
+  hasError(payload) {
+    return payload && !!payload.errorMessage
+  }
+
+  fomatError(error) {
+    if (typeof error === 'string') {
+      return {
+        statusCode: 400,
+        message: error
+      }
+    }
+    
+    const err = typeof error === 'object' ? error : {}
+
+    return {
+      statusCode: err.statusCode || 400,
+      message: err.message || 'Error',
+    }
   }
 }
 

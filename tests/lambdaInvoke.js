@@ -50,6 +50,43 @@ describe('lambdaInvoke tests', () => {
     done()
   })
 
+  it('should parse payload', done => {
+    const fakePayload = {foo: 'bar'}
+
+    expect(lambdaInvoker.parsePayload(fakePayload)).to.deep.equal(fakePayload)
+    expect(lambdaInvoker.parsePayload(JSON.stringify(fakePayload))).to.deep.equal(fakePayload)
+    done()
+  })
+
+  it('should not parse payload if it isn\'t a valid stringified object', done => {
+    const fakePayload = faker.lorem.word()
+
+    expect(lambdaInvoker.parsePayload(fakePayload)).to.deep.equal(fakePayload)
+    done()
+  })
+
+  it('should find errors in payload', done => {
+    expect(lambdaInvoker.hasError({errorMessage: faker.lorem.word()})).to.be.true;
+    done()
+  })
+
+  it('should format error from string', done => {
+    const error = faker.lorem.word()
+
+    expect(lambdaInvoker.fomatError(error)).to.deep.equal({
+      statusCode: 400,
+      message: error
+    });
+    done()
+  })
+
+  it('should format error from object', done => {
+    const error = {statusCode: 403, message: faker.lorem.word()}
+
+    expect(lambdaInvoker.fomatError(error)).to.deep.equal(error);
+    done()
+  })
+
   describe('callback tests', () => {
     it('should get error by invoked lambda', done => {
       const fakeError = {statusCode: faker.random.number(), message: faker.lorem.word()}
@@ -81,10 +118,11 @@ describe('lambdaInvoke tests', () => {
 
     it('should get payload by invoked lambda', done => {
       const fakePayload = {Payload: {foo: 'bar'}}
+      const fakePayloadStringified = {Payload: JSON.stringify(fakePayload.Payload)}
 
       lambdaInvoker = new LambdaInvoker({
         invoke: (params, cb) => {
-          cb(null, fakePayload)
+          cb(null, fakePayloadStringified)
         }
       })
 
@@ -136,10 +174,11 @@ describe('lambdaInvoke tests', () => {
 
     it('should get payload by invoked lambda', () => {
       const fakePayload = {Payload: {foo: 'bar'}}
+      const fakePayloadStringified = {Payload: JSON.stringify(fakePayload.Payload)}
 
       lambdaInvoker = new LambdaInvoker({
         invoke: (params, cb) => {
-          cb(null, fakePayload)
+          cb(null, fakePayloadStringified)
         }
       })
 
