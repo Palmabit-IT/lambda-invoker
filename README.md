@@ -1,5 +1,8 @@
 # Lambda invoker
 
+[![Known Vulnerabilities](https://snyk.io/test/github/Palmabit-IT/lambda-invoker/badge.svg)](https://snyk.io/test/github/Palmabit-IT/lambda-invoker)
+[![https://david-dm.org/Palmabit-IT/lambda-invoker.svg](https://david-dm.org/Palmabit-IT/lambda-invoker.svg)](https://david-dm.org/Palmabit-IT/lambda-invoker.svg)
+
 A class to invoke an AWS Lambda function from an other
 
 ## Installation
